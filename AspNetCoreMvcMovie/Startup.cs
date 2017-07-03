@@ -1,10 +1,14 @@
-﻿namespace AspNetCoreMvcMovie
+﻿
+namespace AspNetCoreMvcMovie
 {
+	using AspNetCoreMvcMovie.Models;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
+	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Logging;
+
 
 	public class Startup
 	{
@@ -20,12 +24,14 @@
 			Configuration = builder.Build();
 		}
 
-
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
 			// Add framework services.
 			services.AddMvc();
+
+			services.AddDbContext<MvcMovieContext>(options =>
+							options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +56,7 @@
 			{
 				routes.MapRoute(
 									name: "default",
-									template: "{controller=Home}/{action=Index}/{id?}");
+									template: "{controller=Movies}/{action=Index}/{id?}");
 			});
 		}
 	}
