@@ -1,9 +1,0 @@
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\bin\Debug\netcoreapp1.1\AspNetCoreMvcMovie.deps.json
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\bin\Debug\netcoreapp1.1\AspNetCoreMvcMovie.runtimeconfig.json
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\bin\Debug\netcoreapp1.1\AspNetCoreMvcMovie.runtimeconfig.dev.json
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\bin\Debug\netcoreapp1.1\AspNetCoreMvcMovie.dll
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\bin\Debug\netcoreapp1.1\AspNetCoreMvcMovie.pdb
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\obj\Debug\netcoreapp1.1\AspNetCoreMvcMovie.AssemblyInfo.cs
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\obj\Debug\netcoreapp1.1\AspNetCoreMvcMovie.dll
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\obj\Debug\netcoreapp1.1\AspNetCoreMvcMovie.pdb
-C:\Wirawan\GitHub\AspNetCoreMvcMovie\AspNetCoreMvcMovie\obj\Debug\netcoreapp1.1\AspNetCoreMvcMovie.csprojResolveAssemblyReference.cache
