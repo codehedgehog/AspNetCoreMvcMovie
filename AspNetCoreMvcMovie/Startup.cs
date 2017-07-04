@@ -1,14 +1,13 @@
-﻿
-namespace AspNetCoreMvcMovie
+﻿namespace AspNetCoreMvcMovie
 {
 	using AspNetCoreMvcMovie.Models;
+	using AspNetCoreMvcMovie.Models.MvcMovie.Models;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Logging;
-
 
 	public class Startup
 	{
@@ -58,6 +57,7 @@ namespace AspNetCoreMvcMovie
 									name: "default",
 									template: "{controller=Movies}/{action=Index}/{id?}");
 			});
+			SeedData.Initialize(app.ApplicationServices);
 		}
 	}
 }
