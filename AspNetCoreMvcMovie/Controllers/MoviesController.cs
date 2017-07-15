@@ -1,13 +1,13 @@
-using AspNetCoreMvcMovie.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace AspNetCoreMvcMovie.Controllers
 {
+	using AspNetCoreMvcMovie.Models;
+	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.AspNetCore.Mvc.Rendering;
+	using Microsoft.EntityFrameworkCore;
+	using System;
+	using System.Linq;
+	using System.Threading.Tasks;
+
 	public class MoviesController : Controller
 	{
 		private readonly MvcMovieContext _context;
@@ -40,8 +40,6 @@ namespace AspNetCoreMvcMovie.Controllers
 			};
 			return View(movieGenreVM);
 		}
-
-
 
 		// GET: Movies/Details/5
 		public async Task<IActionResult> Details(int? id)

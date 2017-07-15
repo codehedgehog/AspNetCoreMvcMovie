@@ -7,6 +7,24 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="notes.md" />
+    <None Remove="ScaffoldingReadMe.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Migrations\20170712021314_Initial.cs" />
+    <Compile Include="Migrations\20170712021314_Initial.Designer.cs" />
+    <Compile Include="Migrations\MvcMovieContextModelSnapshot.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />

@@ -7,6 +7,7 @@ namespace AspNetCoreMvcMovie.Models
 		public MvcMovieContext(DbContextOptions<MvcMovieContext> options)
 				: base(options)
 		{
+			//Database.EnsureCreatedAsync();
 		}
 
 		public DbSet<AspNetCoreMvcMovie.Models.Movie> Movie { get; set; }
