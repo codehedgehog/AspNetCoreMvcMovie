@@ -20,20 +20,11 @@ namespace AspNetCoreMvcMovie.Controllers
 		// GET: Movies
 		public async Task<IActionResult> Index(string movieGenre, string searchString)
 		{
-			IQueryable<string> genreQuery = from m in _context.Movie
-																			orderby m.Genre
-																			select m.Genre;
-
-			var movies = from m in _context.Movie select m;
-			if (!String.IsNullOrEmpty(searchString))
-			{
-				movies = movies.Where(s => s.Title.Contains(searchString));
-			}
-			if (!String.IsNullOrEmpty(movieGenre))
-			{
-				movies = movies.Where(x => x.Genre == movieGenre);
-			}
-			var movieGenreVM = new MovieGenreViewModel()
+			IQueryable<string> genreQuery = _context.Movie.OrderBy(m => m.Genre).Select(m => m.Genre);
+			var movies = _context.Movie.Select(m => m);
+			if (!string.IsNullOrWhiteSpace(searchString)) movies = movies.Where(s => s.Title.Contains(searchString));
+			if (!string.IsNullOrWhiteSpace(movieGenre)) movies = movies.Where(x => x.Genre == movieGenre);
+			MovieGenreViewModel movieGenreVM = new MovieGenreViewModel()
 			{
 				genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
 				movies = await movies.ToListAsync()
@@ -44,18 +35,9 @@ namespace AspNetCoreMvcMovie.Controllers
 		// GET: Movies/Details/5
 		public async Task<IActionResult> Details(int? id)
 		{
-			if (id == null)
-			{
-				return NotFound();
-			}
-
-			var movie = await _context.Movie
-					.SingleOrDefaultAsync(m => m.ID == id);
-			if (movie == null)
-			{
-				return NotFound();
-			}
-
+			if (id == null)	return NotFound();
+			var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
+			if (movie == null) return NotFound();
 			return View(movie);
 		}
 
@@ -66,8 +48,7 @@ namespace AspNetCoreMvcMovie.Controllers
 		}
 
 		// POST: Movies/Create
-		// To protect from overposting attacks, please enable the specific properties you want to bind to, for
-		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
@@ -156,8 +137,11 @@ namespace AspNetCoreMvcMovie.Controllers
 		public async Task<IActionResult> DeleteConfirmed(int id)
 		{
 			var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
-			_context.Movie.Remove(movie);
-			await _context.SaveChangesAsync();
+			if (movie != null)
+			{
+				_context.Movie.Remove(movie);
+				await _context.SaveChangesAsync();
+			}
 			return RedirectToAction("Index");
 		}
 
